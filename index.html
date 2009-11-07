@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>Google Maps Directions to Polyline Encoder</title>
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAArWABZIDn9rFfEf8juzXn7hT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSwytzHjxZeW43tkdAkFaIp0ZjfXw&sensor=false" type="text/javascript"></script>
+  <script type="text/javascript">
+  function initialize() {
+    if (GBrowserIsCompatible()) {
+      document.map = new GMap2(document.getElementById("map_canvas"));
+      document.map.setCenter(new GLatLng(55.37911,-97.910156), 3);
+      document.map.addControl(new GLargeMapControl());
+      document.map.addControl(new GMapTypeControl());
+    }
+  }
+  </script>
+  <script type="text/javascript" src="http://code.google.com/apis/maps/documentation/include/polyline.js"></script>
+  <script type="text/javascript" src="js/encoder.js"></script>
+</head>
+<body onload="initialize()" onunload="GUnload()">
+  <h1>Google Maps Directions to Polyline Encoder</h1>
+
+  <div id="map_canvas" style="width: 400px; height: 300px; float: left; margin-right:15px;"></div>
+
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="2"><div id="message"></div></td>
+      </tr>
+
+      <tr>
+        <td>List of waypoints:<br />(one per line)</td>
+        <td><textarea id="waypointList" cols="50" rows="5"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="button" value="Encode" onclick="encodeDirections(parseWaypoints());"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Encoded Polyline:</td>
+        <td><textarea class="encodeBox" id="encodedPolyline" cols="50" rows="5"></textarea></td>
+      </tr>
+      <tr>
+        <td>Encoded Levels:</td>
+        <td><textarea class="encodeBox" id="encodedLevels" cols="50" rows="5"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="button" value="Draw" onclick="drawEncodedPoints();"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
